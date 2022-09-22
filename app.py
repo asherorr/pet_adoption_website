@@ -27,9 +27,10 @@ def add_pet():
         return redirect(url_for('index'))
     return render_template('addpet.html')
 
-@app.route('/pet')
-def pet():
-    return render_template('pet.html')
+@app.route('/pet/<id>')
+def pet(id):
+    pet = Pet.query.get(id)
+    return render_template('pet.html', pet=pet)
 
 
 if __name__ == '__main__':
